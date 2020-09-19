@@ -19,5 +19,5 @@ git clone https://github.com/rjiovan/nocode.git
 
 Install node_modules
 ```
-yarn install
+yarn (or npm) install
 ```
