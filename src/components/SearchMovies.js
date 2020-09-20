@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../components/SearchMovies.css';
 
 export default function SearchMovies() {
 
+    const [query, setQuery] = useState('');
+    const [movies, setMovies] = useState([]);
+
     const searchMovies = async (e) => {
         e.preventDefault();
-        const query = 'project power'
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&language=en-US&query=${query}&page=1&include_adult=false`;
 
         try {
             const res = await fetch(url); 
             const data = await res.json();
-            console.log(data)
+            setMovies(data.results)
         } catch (err) {
             console.log(err);
         }
@@ -25,7 +27,8 @@ export default function SearchMovies() {
                     className="input" 
                     type="text" 
                     name="query" 
-                    placeholder="i.e. iRobot"
+                    placeholder="i.e. Bad Boys"
+                    onChange={(e) => setQuery(e.target.value)}
                     >
                 </input>
                 <button className="button" type="submit">Search</button>                
