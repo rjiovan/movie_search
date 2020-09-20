@@ -1,5 +1,11 @@
+//Vendor libraries
 import React, { useState } from 'react'
+
+//Style
 import '../components/SearchMovies.css';
+
+//Components
+import Movies from './Movies';
 
 export default function SearchMovies() {
 
@@ -33,6 +39,7 @@ export default function SearchMovies() {
                 </input>
                 <button className="button" type="submit">Search</button>                
             </form>
+            <Movies movies={movies} />
         </div>
     )
 }
